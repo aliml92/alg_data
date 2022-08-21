@@ -1,4 +1,4 @@
-package main
+package unsorted
 
 
 func Search(nums []int, target int) (int, int) {

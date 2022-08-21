@@ -1,4 +1,4 @@
-package main
+package unsorted
 
 
 func IsAnagram(s string, t string) bool {
