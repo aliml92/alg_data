@@ -3,8 +3,8 @@ package main
 import (
 	"fmt"
 
-	ch4 "github.com/aliml92/algdata/grokking-algorithms-books/chapter04"
-	ch6 "github.com/aliml92/algdata/grokking-algorithms-books/chapter06"
+	ch4 "github.com/aliml92/algdata/grokking-algorithms-book/chapter04"
+	ch6 "github.com/aliml92/algdata/grokking-algorithms-book/chapter06"
 )
 
 
