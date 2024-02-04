@@ -16,7 +16,7 @@ func main() {
 
 	defer file.Close()
 
-	result := solutionWithoutStringsPkg(file)
+	result := solutionPartTwo(file)
 	fmt.Println("result:", result)
 
 }
@@ -121,6 +121,48 @@ func solutionWithoutStringsPkg(file *os.File) int {
 		
 		stopLineScan:
 			// stop scanning the line as it does not meet the requirement
+	}
+
+	return result
+}
+
+func solutionPartTwo(file *os.File) int {
+	var result int
+	m := map[string]int{
+		"red": 0,
+		"green": 0,
+		"blue": 0,
+	}
+
+	scanner := bufio.NewScanner(file)
+	for scanner.Scan() {
+		line := scanner.Text()
+		s := strings.Split(line, ":")[1]
+		sets := strings.Split(s, ";")	
+		for _, set := range sets {
+			setItems := strings.Split(set, ",")
+			for _, setItem := range setItems {
+				setItem := strings.TrimSpace(setItem)
+				pair := strings.Split(setItem, " ")
+				color := pair[1]
+				num, _ := strconv.Atoi(pair[0])
+				currNum := m[color]
+				if num > currNum {
+					m[color] = num
+				}
+			}
+		}
+
+		p := 1
+		for k, v := range m {
+			p *= v
+
+			// reset values for the next lines
+			m[k] = 0
+		}
+
+		result += p
+
 	}
 
 	return result
